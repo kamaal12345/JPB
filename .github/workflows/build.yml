@@ -11,6 +11,8 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     permissions: read-all
+    - name: Check SonarQube Connectivity
+        run: curl -v ${{ secrets.SONAR_HOST_URL }}/api/system/status
     steps:
       - uses: actions/checkout@v2
         with:
