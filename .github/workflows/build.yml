@@ -11,8 +11,6 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     permissions: read-all
-    - name: Check SonarQube Connectivity
-        run: curl -v ${{ secrets.SONAR_HOST_URL }}/api/system/status
     steps:
       - uses: actions/checkout@v2
         with:
@@ -20,7 +18,7 @@ jobs:
       - uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_HOST_URL: http://100.115.92.198:9000
       # If you wish to fail your job when the Quality Gate is red, uncomment the
       # following lines. This would typically be used to fail a deployment.
       # - uses: sonarsource/sonarqube-quality-gate-action@master
